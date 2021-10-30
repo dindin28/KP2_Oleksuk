@@ -1,5 +1,5 @@
-#ifndef _KP1_INCLUDE_KP1_SAWINGOPTION_H_
-#define _KP1_INCLUDE_KP1_SAWINGOPTION_H_
+#ifndef _KP2_INCLUDE_KP2_SAWINGOPTION_H_
+#define _KP2_INCLUDE_KP2_SAWINGOPTION_H_
 
 #include <string>
 
@@ -14,4 +14,4 @@ enum SawingOption
 std::string SawingOptionToString(SawingOption option);
 SawingOption IntToSawingOption(int option);
 
-#endif //Header Guard
+#endif // Header Guard

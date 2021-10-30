@@ -1,5 +1,5 @@
-#ifndef _KP1_INCLUDE_KP1_DATE_H_
-#define _KP1_INCLUDE_KP1_DATE_H_
+#ifndef _KP2_INCLUDE_KP2_DATE_H_
+#define _KP2_INCLUDE_KP2_DATE_H_
 
 #include <iostream>
 
@@ -11,27 +11,27 @@ public:
   Date(const Date &copy);
   ~Date();
 
-  //Getters
+  // Getters
   int GetDay();
   int GetMonth();
   int GetYear();
 
-  //Selectors
+  // Selectors
   Date &SetDay(int day);
   Date &SetMonth(int month);
   Date &SetYear(int year);
 
   void Print();
 
-  //Operators
+  // Operators
   bool operator==(const Date &copy);
   bool operator!=(const Date &copy);
 
-  friend std::ostream& operator<< (std::ostream &out, const Date &obj);
-  friend std::istream& operator>> (std::istream &in, Date &obj);
+  friend std::ostream &operator<<(std::ostream &out, const Date &obj);
+  friend std::istream &operator>>(std::istream &in, Date &obj);
 
 private:
   int day_, month_, year_;
-}; //Class (Date)
+}; // Class (Date)
 
-#endif //Header Guard
+#endif // Header Guard

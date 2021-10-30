@@ -1,7 +1,7 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 
-#include <KP1/date.h>
+#include <KP2/date.h>
 
 #include <ctime>
 #include <iomanip>
@@ -29,22 +29,32 @@ Date::Date()
   month = (now->tm_mon + 1);
   year = (now->tm_year + 1900);
   */
+  std::cout << "Date()" << std::endl;
 }
 
 Date::Date(int day, int month, int year)
-    : day_(day), month_(month), year_(year) {}
+    : day_(day), month_(month), year_(year)
+{
+  std::cout << "Date(int day, int month, int year)" << std::endl;
+}
 
 Date::Date(const Date &copy)
-    : day_(copy.day_), month_(copy.month_), year_(copy.year_) {}
+    : day_(copy.day_), month_(copy.month_), year_(copy.year_)
+{
+  std::cout << "Date(const Date &copy)" << std::endl;
+}
 
-Date::~Date() {}
+Date::~Date()
+{
+  std::cout << "~Date()" << std::endl;
+}
 
-//Getters
+// Getters
 int Date::GetDay() { return day_; }
 int Date::GetMonth() { return month_; }
 int Date::GetYear() { return year_; }
 
-//Selectors
+// Selectors
 Date &Date::SetDay(int day)
 {
   day_ = day;
@@ -71,7 +81,7 @@ void Date::Print()
             << std::setw(4) << year_ << std::endl;
 }
 
-//Operators
+// Operators
 bool Date::operator==(const Date &copy)
 {
   return (day_ == copy.day_ &&

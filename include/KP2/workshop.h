@@ -1,39 +1,42 @@
-#ifndef _KP1_INCLUDE_KP1_WORKSHOP_H_
-#define _KP1_INCLUDE_KP1_WORKSHOP_H_
+#ifndef _KP2_INCLUDE_KP2_WORKSHOP_H_
+#define _KP2_INCLUDE_KP2_WORKSHOP_H_
 
-#include <KP1/lumber.h>
+#include <KP2/lumber.h>
 
 class Workshop
 {
 public:
-  //Default constructor(with no parameters)
+  // Default constructor(with no parameters)
   Workshop();
 
-  //Constructor with parameters
+  // Constructor with parameters
   Workshop(int workshop_serial_number);
 
-  //Copy constructor
+  // Copy constructor
   Workshop(const Workshop &copy);
 
-  //operator=
+  // Destructor
+  ~Workshop();
+
+  // operator=
   Workshop &operator=(const Workshop &copy);
 
-  //Setters
+  // Setters
   Workshop &SetWorkshopSerialNumber(const int workshop_serial_number);
   Workshop &SetNewPointer(const Lumber *pointer, const size_t size);
 
-  //Getters
+  // Getters
   int GetShopsCount() const;
   int GetWorkshopSerialNumber() const;
   int GetSize() const;
 
-  //Function for printing class info
+  // Function for printing class info
   void Print();
   void PrintShortly();
 
-  //Other functions
+  // Other functions
   void AddLumber(const Lumber value);
-  bool RemoveWood(const Wood value); //return if there is wood in lumber
+  bool RemoveWood(const Wood value); // return if there is wood in lumber
 
   Lumber &operator[](const int index);
 
@@ -42,6 +45,6 @@ private:
   int workshop_serial_number_;
   Lumber *pointer_;
   size_t size_;
-}; //Class (Workshop)
+}; // Class (Workshop)
 
-#endif //Header Guard
+#endif // Header Guard

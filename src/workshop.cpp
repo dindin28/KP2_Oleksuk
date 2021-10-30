@@ -1,27 +1,31 @@
 // This is a personal academic project. Dear PVS-Studio, please check it.
 // PVS-Studio Static Code Analyzer for C, C++ and C#: http://www.viva64.com
 
-#include <KP1/workshop.h>
+#include <KP2/workshop.h>
 
 #include <iostream>
 
 int Workshop::workshops_count_ = 0;
 
-//Default constructor(with no parameters)
+// Default constructor(with no parameters)
 Workshop::Workshop()
     : workshop_serial_number_(workshops_count_ + 1), size_(0), pointer_(nullptr)
 {
   workshops_count_++;
+
+  std::cout << "Workshop()" << std::endl;
 }
 
-//Constructor with parameters
+// Constructor with parameters
 Workshop::Workshop(int workshop_serial_number)
     : workshop_serial_number_(workshop_serial_number), size_(0), pointer_(nullptr)
 {
   workshops_count_++;
+
+  std::cout << "Workshop(int workshop_serial_number)" << std::endl;
 }
 
-//Copy constructor
+// Copy constructor
 Workshop::Workshop(const Workshop &copy)
     : size_(copy.size_), workshop_serial_number_(copy.workshop_serial_number_)
 {
@@ -32,12 +36,24 @@ Workshop::Workshop(const Workshop &copy)
   }
 
   workshops_count_++;
+
+  std::cout << "Workshop(int workshop_serial_number)" << std::endl;
 }
 
-//operator=
+Workshop::~Workshop()
+{
+  if (size_ != 0)
+  {
+    delete[] pointer_;
+  }
+
+  std::cout << "~Workshop()" << std::endl;
+}
+
+// operator=
 Workshop &Workshop::operator=(const Workshop &copy)
 {
-  if (this != &copy) //Protection from leak of memory
+  if (this != &copy) // Protection from leak of memory
   {
     if (size_ != 0)
     {
@@ -48,16 +64,16 @@ Workshop &Workshop::operator=(const Workshop &copy)
     for (int i = 0; i < copy.size_; i++)
     {
       pointer_[i] = copy.pointer_[i];
-    } //For loop(i < copy.size_)
+    } // For loop(i < copy.size_)
 
     size_ = copy.size_;
     workshop_serial_number_ = copy.workshop_serial_number_;
-  } //Condition (this != &copy)
+  } // Condition (this != &copy)
 
   return *this;
 }
 
-//Setters
+// Setters
 Workshop &Workshop::SetWorkshopSerialNumber(const int workshop_serial_number)
 {
   workshop_serial_number_ = workshop_serial_number;
@@ -81,12 +97,12 @@ Workshop &Workshop::SetNewPointer(const Lumber *pointer, const size_t size)
   return *this;
 }
 
-//Getters
+// Getters
 int Workshop::GetShopsCount() const { return workshops_count_; }
 int Workshop::GetWorkshopSerialNumber() const { return workshop_serial_number_; }
 int Workshop::GetSize() const { return size_; }
 
-//Function for printing class info
+// Function for printing class info
 void Workshop::Print()
 {
   std::cout << "Workshop #" << workshop_serial_number_ << std::endl;
@@ -111,7 +127,7 @@ void Workshop::PrintShortly()
   std::cout << ", lumbers: " << sum << std::endl;
 }
 
-//Other functions
+// Other functions
 void Workshop::AddLumber(const Lumber value)
 {
   if (size_ != 0)
@@ -133,7 +149,7 @@ void Workshop::AddLumber(const Lumber value)
   ++size_;
 }
 
-//return if there is toy in shop
+// return if there is toy in shop
 bool Workshop::RemoveWood(const Wood value)
 {
   bool is_valid_to_sell = false;
@@ -157,8 +173,8 @@ bool Workshop::RemoveWood(const Wood value)
             {
               new_pointer[k] = pointer_[j];
               k++;
-            } //Condition (j != i)
-          }   //for loop (j < size_)
+            } // Condition (j != i)
+          }   // for loop (j < size_)
           delete[] pointer_;
           pointer_ = new_pointer;
         }
@@ -167,8 +183,8 @@ bool Workshop::RemoveWood(const Wood value)
           delete[] pointer_;
         }
         --size_;
-      } //Condition (pointer_[i].GetCounts() - 1 > 0)
-    }   //Condition (pointer_[i].GetToy() == value)
-  }     //for loop (i < size_ && is_valid_to_sell == false)
+      } // Condition (pointer_[i].GetCounts() - 1 > 0)
+    }   // Condition (pointer_[i].GetToy() == value)
+  }     // for loop (i < size_ && is_valid_to_sell == false)
   return is_valid_to_sell;
 }

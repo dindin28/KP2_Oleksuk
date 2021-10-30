@@ -1,40 +1,40 @@
-#ifndef _KP1_INCLUDE_KP1_WOOD_H_
-#define _KP1_INCLUDE_KP1_WOOD_H_
+#ifndef _KP2_INCLUDE_KP2_WOOD_H_
+#define _KP2_INCLUDE_KP2_WOOD_H_
 
 #include <iostream>
 
 class Wood
 {
 public:
-  //Default constructor(with no parameters)
+  // Default constructor(with no parameters)
   Wood();
 
-  //Constructor with parameters
+  // Constructor with parameters
   Wood(const char *tree_species, int wood_moisture, int wood_density);
 
-  //Copy constructor
+  // Copy constructor
   Wood(const Wood &copy);
 
-  //operator =
+  // operator =
   Wood &operator=(const Wood &copy);
 
-  //Destructor
+  // Destructor
   ~Wood();
 
-  //Setters
+  // Setters
   Wood &SetTreeSpecies(const char *tree_species);
   Wood &SetWoodMoisture(int wood_moisture);
   Wood &SetWoodDensity(int wood_density);
 
-  //Getters
+  // Getters
   const char *GetTreeSpecies() const;
   int GetWoodMoisture() const;
   int GetWoodDensity() const;
 
-  //Function to print class info
+  // Function to print class info
   void Print();
 
-  //Operators
+  // Operators
   bool operator==(const Wood &copy);
   bool operator!=(const Wood &copy);
 
@@ -44,6 +44,6 @@ public:
 private:
   char *tree_species_;
   int wood_moisture_, wood_density_;
-}; //Class(Wood)
+}; // Class(Wood)
 
-#endif //Header Guard
+#endif // Header Guard
